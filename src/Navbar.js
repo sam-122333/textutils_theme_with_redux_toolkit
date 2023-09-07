@@ -1,13 +1,12 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-export const Navbar = (props) => {
+const Navbar = (props) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
-          {props.title}
+          TextUtils
         </Link>
         <button
           className="navbar-toggler"
@@ -23,11 +22,7 @@ export const Navbar = (props) => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link
-                className="nav-link"
-                aria-current="page"
-                to="/textForm"
-              >
+              <Link className="nav-link" aria-current="page" to="/textForm">
                 Home
               </Link>
             </li>
@@ -39,7 +34,7 @@ export const Navbar = (props) => {
           </ul>
         </div>
         <div className="d-flex">
-        <div
+          <div
             className="bg-light rounded mx-2"
             style={{
               width: "30px",
@@ -104,7 +99,7 @@ export const Navbar = (props) => {
     </nav>
   );
 };
-Navbar.defaultProps = { title: "defaultTitle" };
-Navbar.propTypes = { title: PropTypes.string.isRequired };
+
+export default Navbar;
 
 // again changed something

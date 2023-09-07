@@ -1,16 +1,31 @@
 import React from "react";
+import { useSelector } from "react-redux";
+
 export default function About(props) {
+  const aboutCompStyle = useSelector(
+    (state) => state.aboutCompStyle.aboutCompStyle
+  );
+
   return (
     <>
       <div className="container py-2 border border-dange rounded-top rounded-bottom my-3">
         <div className="accordion" id="accordionExample">
-          <h1 className="my-3" style={props.compStyle}>
+          <h1
+            className="my-3"
+            style={{
+              backgroundColor: aboutCompStyle.backgroundColor,
+              color: aboutCompStyle.color,
+            }}
+          >
             About Us
           </h1>
           <div className="accordion-item">
             <h2 className="accordion-header" id="headingOne">
               <button
-                style={props.compStyle}
+                style={{
+                  backgroundColor: aboutCompStyle.backgroundColor,
+                  color: aboutCompStyle.color,
+                }}
                 className="accordion-button"
                 type="button"
                 data-bs-toggle="collapse"
@@ -22,7 +37,10 @@ export default function About(props) {
               </button>
             </h2>
             <div
-              style={props.compStyle}
+              style={{
+                backgroundColor: aboutCompStyle.backgroundColor,
+                color: aboutCompStyle.color,
+              }}
               id="collapseOne"
               className="accordion-collapse collapse show"
               aria-labelledby="headingOne"
@@ -44,7 +62,10 @@ export default function About(props) {
           <div className="accordion-item">
             <h2 className="accordion-header" id="headingTwo">
               <button
-                style={props.compStyle}
+                style={{
+                  backgroundColor: aboutCompStyle.backgroundColor,
+                  color: aboutCompStyle.color,
+                }}
                 className="accordion-button collapsed"
                 type="button"
                 data-bs-toggle="collapse"
@@ -55,7 +76,11 @@ export default function About(props) {
                 Accordion Item #2
               </button>
             </h2>
-            <div style={props.compStyle}
+            <div
+              style={{
+                backgroundColor: aboutCompStyle.backgroundColor,
+                color: aboutCompStyle.color,
+              }}
               id="collapseTwo"
               className="accordion-collapse collapse"
               aria-labelledby="headingTwo"
@@ -76,7 +101,11 @@ export default function About(props) {
           </div>
           <div className="accordion-item">
             <h2 className="accordion-header" id="headingThree">
-              <button style={props.compStyle}
+              <button
+                style={{
+                  backgroundColor: aboutCompStyle.backgroundColor,
+                  color: aboutCompStyle.color,
+                }}
                 className="accordion-button collapsed"
                 type="button"
                 data-bs-toggle="collapse"
@@ -87,7 +116,11 @@ export default function About(props) {
                 Accordion Item #3
               </button>
             </h2>
-            <div style={props.compStyle}
+            <div
+              style={{
+                backgroundColor: aboutCompStyle.backgroundColor,
+                color: aboutCompStyle.color,
+              }}
               id="collapseThree"
               className="accordion-collapse collapse"
               aria-labelledby="headingThree"
@@ -112,4 +145,4 @@ export default function About(props) {
   );
 }
 
-// not for staging 
+// not for staging

@@ -1,6 +1,15 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { handleShowAlert } from "./store/slices/alertSlice";
 
 export default function TextForm(props) {
+  const dispatch = useDispatch();
+  const myStyle = useSelector((state) => state.myStyle);
+  const myBtn = useSelector((state) => state.btnStyle);
+  const textAreaStyle = useSelector(
+    (state) => state.textAreaStyle.textAreaStyle
+  );
+
   const [text, setText] = useState("");
 
   const handleChange = (e) => {
@@ -12,34 +21,33 @@ export default function TextForm(props) {
       document.getElementById("myBox").value.toUpperCase(),
       "this is the value"
     );
-    props.showAlert("Converted to Upper Case.", "Success! ");
-    // console.log("onclick happened: ");
+    dispatch(handleShowAlert("Converted to Upper Case.", "Success! "));
   };
   const changeLowerCase = () => {
     setText(document.getElementById("myBox").value.toLowerCase());
-    props.showAlert("Converted to Lower Case.", "Success! ");
+    dispatch(handleShowAlert("Converted to Lower Case.", "Success! "));
     // console.log("onclick happened: ");
   };
 
   const handleCopy = () => {
     navigator.clipboard.writeText(text);
-    props.showAlert("copied to clipboard.", "Success! ");
+    dispatch(handleShowAlert("copied to clipboard.", "Success! "));
   };
   const clearText = () => {
-    props.showAlert("Text is cleared.", "Success! ");
+    dispatch(handleShowAlert("Text is cleared.", "Success! "));
     setText("");
   };
   const handleExtraSpace = () => {
     const newText = text.split(/[ ]+/);
     setText(newText.join(" "));
-    props.showAlert("Extra space removed.", "Success! ");
+    dispatch(handleShowAlert("Extra space removed.", "Success! "));
   };
 
   return (
     <>
       <div className="container my-3">
         <div className="mb-3">
-          <h2 style={props.style}>{props.textArea}</h2>
+          <h2 style={{ color: myStyle }}>Enter Text To Analyze</h2>
           <textarea
             placeholder="Enter Some Text Here..."
             value={text}
@@ -47,46 +55,49 @@ export default function TextForm(props) {
             id="myBox"
             rows="8"
             onChange={handleChange}
-            style={props.textStyle}
+            style={{
+              backgroundColor: textAreaStyle.backgroundColor,
+              color: textAreaStyle.color,
+            }}
           ></textarea>
         </div>
         <button
           disabled={text.length === 0}
           onClick={changeUpperCase}
-          className={`btn btn-${props.btn} mx-2 my-1`}
+          className={`btn btn-${myBtn} mx-2 my-1`}
         >
           Convert to Uppercase
         </button>
         <button
           disabled={text.length === 0}
           onClick={changeLowerCase}
-          className={`btn btn-${props.btn} mx-2 my-1`}
+          className={`btn btn-${myBtn} mx-2 my-1`}
         >
           Convert to Lowercase
         </button>
         <button
           disabled={text.length === 0}
           onClick={handleCopy}
-          className={`btn btn-${props.btn} mx-2 my-1`}
+          className={`btn btn-${myBtn} mx-2 my-1`}
         >
           Copy Text
         </button>
         <button
           disabled={text.length === 0}
           onClick={handleExtraSpace}
-          className={`btn btn-${props.btn} mx-2 my-1`}
+          className={`btn btn-${myBtn} mx-2 my-1`}
         >
           Remove Space
         </button>
         <button
           disabled={text.length === 0}
           onClick={clearText}
-          className={`btn btn-${props.btn} mx-2 my-1`}
+          className={`btn btn-${myBtn} mx-2 my-1`}
         >
           Clear Text
         </button>
       </div>
-      <div className="container my-3" style={props.style}>
+      <div className="container my-3" style={{ color: myStyle }}>
         <h1>your text summery</h1>
         <p>
           {

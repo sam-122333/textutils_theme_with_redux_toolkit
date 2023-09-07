@@ -1,14 +1,17 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
-function Alert(props) {
+function Alert() {
+  const alertState = useSelector((state) => state.alert.alert);
+  // console.log(alertState);
   return (
-    <div style={{height:"50px"}}>
-      {props.alertMsg && (
+    <div style={{ height: "50px" }}>
+      {alertState && (
         <div
           className="alert alert-success alert-dismissible fade show"
           role="alert"
         >
-          <strong>{props.alertMsg.type}</strong> {props.alertMsg.msg}
+          <strong>{alertState.type}</strong> {alertState.msg}
         </div>
       )}
     </div>
