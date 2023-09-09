@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-export default function About(props) {
+export default function About() {
   const aboutCompStyle = useSelector(
     (state) => state.aboutCompStyle.aboutCompStyle
   );

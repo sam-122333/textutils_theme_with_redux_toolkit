@@ -2,7 +2,7 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import alertSlice from "./slices/alertSlice";
 import myStyleSlice from "./slices/myStyleSlice";
 import btnStyleSlice from "./slices/btnStyleSlice";
-import textAreaStyleSlice from "./slices/textAreaStyle";
+import textAreaStyleSlice from "./slices/textAreaStyleSlice";
 import aboutCompStyleSlice from "./slices/aboutCompStyleSlice";
 
 const rootReducer = combineReducers({

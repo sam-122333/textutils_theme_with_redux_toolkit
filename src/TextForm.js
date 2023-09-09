@@ -9,7 +9,7 @@ export default function TextForm(props) {
   const textAreaStyle = useSelector(
     (state) => state.textAreaStyle.textAreaStyle
   );
-
+  console.log(textAreaStyle);
   const [text, setText] = useState("");
 
   const handleChange = (e) => {
@@ -26,7 +26,6 @@ export default function TextForm(props) {
   const changeLowerCase = () => {
     setText(document.getElementById("myBox").value.toLowerCase());
     dispatch(handleShowAlert("Converted to Lower Case.", "Success! "));
-    // console.log("onclick happened: ");
   };
 
   const handleCopy = () => {
